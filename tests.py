@@ -1,5 +1,5 @@
 import unittest
-
+import gameoflife as gol
 
 
 class GOLTestCase(unittest.TestCase):
