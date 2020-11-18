@@ -37,10 +37,36 @@ def update(current_gameboard: np.ndarray, cell_size: int = None, surface: pygame
 			next_gameboard[r, c] = 1
 			col = colour_alive
 
-		if surface_available: # if surface is available draw cells
+		if surface_available:  # if surface is available draw cells
 			col = col if current_gameboard[r, c] == 1 else colour_background
 			pygame.draw.rect(surface, col, (c * cell_size, r * cell_size, cell_size - 1, cell_size - 1))
 	return next_gameboard
 
+
 if __name__ == '__main__':
-	pass
+	# TODO: arguments for size
+	# TODO: specific patterns as arguments
+	# TODO: random gameboard
+
+	dim_x = 50
+	dim_y = 50
+	cell_size = 10
+
+	surface = init_surface(dim_x, dim_x, cell_size)
+	pattern = np.array([[0, 1, 0, 1, 0, 1, 0],
+						[1, 0, 1, 0, 1, 0, 1],
+						[0, 1, 0, 1, 0, 1, 0],
+						[1, 0, 1, 0, 1, 0, 1],
+						[0, 1, 0, 1, 0, 1, 0]
+						])
+	gameboard = init_gameboard(dim_x, dim_y, pattern)
+
+	while True:
+		for event in pygame.event.get():
+			if event.type == pygame.QUIT:
+				pygame.quit()
+				quit()
+
+		surface.fill(colour_grid)
+		gameboard = update(gameboard, cell_size, surface)
+		pygame.display.update()
