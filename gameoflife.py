@@ -44,7 +44,7 @@ def update(current_gameboard: np.ndarray, cell_size: int = None, surface: pygame
 
 
 def set_random_pattern(dim_x: int, dim_y: int) -> np.ndarray:
-	#return np.random.randint(0, 2, (dim_x, dim_y))
+	# return np.random.randint(0, 2, (dim_x, dim_y))
 	return
 
 
