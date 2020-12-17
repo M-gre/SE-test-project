@@ -43,23 +43,19 @@ def update(current_gameboard: np.ndarray, cell_size: int = None, surface: pygame
 	return next_gameboard
 
 
-if __name__ == '__main__':
-	# TODO: arguments for size
-	# TODO: specific patterns as arguments
-	# TODO: random gameboard
+def set_random_pattern(dim_x: int, dim_y: int) -> np.ndarray:
+	return np.random.randint(0, 2, (dim_x, dim_y))
+	#return
 
-	dim_x = 50
-	dim_y = 50
+
+if __name__ == '__main__':
+	columns = 50
+	rows = 50
 	cell_size = 10
 
-	surface = init_surface(dim_x, dim_x, cell_size)
-	pattern = np.array([[0, 1, 0, 1, 0, 1, 0],
-						[1, 0, 1, 0, 1, 0, 1],
-						[0, 1, 0, 1, 0, 1, 0],
-						[1, 0, 1, 0, 1, 0, 1],
-						[0, 1, 0, 1, 0, 1, 0]
-						])
-	gameboard = init_gameboard(dim_x, dim_y, pattern)
+	surface = init_surface(columns, columns, cell_size)
+	pattern = set_random_pattern(50, 50)
+	gameboard = init_gameboard(columns, rows, pattern)
 
 	while True:
 		for event in pygame.event.get():
